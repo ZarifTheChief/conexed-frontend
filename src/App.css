@@ -1,0 +1,40 @@
+.app{
+    background-color: #f1f3f6;
+    height: 100vh;
+}
+
+.main-header{
+    width: 100vw;
+    height: 10%;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-holder{
+    height: 60%;
+    /* width: 200px; */
+    width: fit-content;
+    padding: 10px;
+    display: flex;
+}
+
+.header-intro{
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    font-size: 25px;
+}
+
+.conexed-logo{
+    height: 90%;
+    width: auto;
+}
+
+.main-area{
+    display: flex;
+    justify-content: space-around;
+    height: 90%;
+}
+
