@@ -1,5 +1,12 @@
 import React from "react";
+import CompletedList from "./completed/CompletedList";
 
-const RightArea = () => <div>This is the right area</div>;
+const RightArea: React.FC = () => {
+    return(
+        <div>
+            <CompletedList />
+        </div>
+    )
+}
 
 export default RightArea;

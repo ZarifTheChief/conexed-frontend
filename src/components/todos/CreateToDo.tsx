@@ -1,13 +1,16 @@
-import React, {ChangeEvent, FormEvent, useState} from "react"
+import React, {ChangeEvent, FormEvent, useContext, useState} from "react"
+import { ToDosContext } from "../../todosContext";
 
-interface Props {
-    addToDo: AddToDo;
-}
+// interface Props {
+//     addToDo: AddToDo;
+// }
 
-const CreateToDo: React.FC<Props> = ({ addToDo }) => {
+const CreateToDo: React.FC = () => {
     // maintining internal state 
     // === data(){} in vue ???
     const [newToDo, setNewToDo] = useState("");
+
+    const todosContext = useContext(ToDosContext);
 
     // === methods: {} in vue
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -15,8 +18,19 @@ const CreateToDo: React.FC<Props> = ({ addToDo }) => {
     }
 
     const handleSubmit = (e: FormEvent<HTMLButtonElement>) => {
-        e.preventDefault();        
-        addToDo(newToDo);
+        e.preventDefault();
+        let all_todos = {...todosContext.todos};
+        let todo = newToDo.trim();
+        if(todo.length){
+            let createDate = Date.now().toString();
+            let newToDoObj = {
+                text: todo,
+                completed: false,
+                createDate: createDate
+            };    
+            all_todos[createDate] = [newToDoObj];
+            todosContext.updateToDos(all_todos);            
+        }
         setNewToDo("");
     }
 
